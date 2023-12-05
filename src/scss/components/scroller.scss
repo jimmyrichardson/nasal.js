@@ -1,0 +1,61 @@
+:root {
+  --scroll: 0;
+}
+
+.scroller {
+  min-height: 440px;
+  position: relative;
+  padding: 3rem;
+
+  @for $i from 1 through 6 {
+    &:nth-child( #{$i} ){
+      background-color: lighten( tomato, $i * 5% );
+    }
+  }
+
+  &--hero {
+    min-height: 90vh;
+    display: flex;
+    align-items: center;
+
+    &__measure {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      height: 25%;
+    }    
+
+    .shape {
+      position: absolute;
+      right: 3rem;
+      top: 200%;
+      &--square {
+        transform: rotate( calc( var(--scroll) * -90deg ) );
+        transform-origin: bottom left;
+      }
+      &--triangle {
+        transform: translate3d( calc( var(--scroll) * -100% ), 0px, 0px ) rotate( calc( var(--scroll) * -116deg ) );
+        transform-origin: bottom left;
+      }
+      &--circle {
+        transform: translate3d( calc( var(--scroll) * -288% ), 0px, 0px );
+      }
+    }
+  }
+
+  &__content {
+    position: sticky;
+    top: 3rem;
+    left: 0;
+
+    &--hero {
+      position: static;
+    }
+
+    p {
+      margin-bottom: 1rem;
+      max-width: 40%;
+    }
+  }
+
+}

@@ -1,0 +1,16 @@
+.shape {
+  position: absolute;
+  top: 5rem;
+  background-color: #111;
+  width: 15vw;
+  height: 15vw;
+  will-change: transform;
+  transition: transform 0.5s ease-out;
+
+  &--circle {
+    border-radius: 50%;
+  }
+  &--triangle {
+    clip-path: polygon( 50% 0, 100% 100%, 0 100% );
+  }
+}
