@@ -7,28 +7,24 @@
   position: relative;
   padding: 3rem;
 
-  @for $i from 1 through 6 {
-    &:nth-child( #{$i} ){
-      background-color: lighten( tomato, $i * 5% );
-    }
-  }
-
   &--hero {
-    min-height: 90vh;
+    background-color: #ffdd80;
+    height: 50vw;
     display: flex;
     align-items: center;
+    padding: 0;
 
     &__measure {
       position: absolute;
-      top: 1rem;
-      right: 1rem;
-      height: 25%;
-    }    
+      top: 5%;
+      right: 0;
+      height: 15%;
+    }
 
     .shape {
       position: absolute;
-      right: 3rem;
-      top: 200%;
+      right: 0;
+      top: 32.5vw;
       &--square {
         transform: rotate( calc( var(--scroll) * -90deg ) );
         transform-origin: bottom left;
@@ -43,18 +39,93 @@
     }
   }
 
+  &--how {
+    min-height: 200vh;
+  }
+
   &__content {
     position: sticky;
-    top: 3rem;
+    top: $spacing;
     left: 0;
+
+    &--flex {
+      display: flex;
+    }
 
     &--hero {
       position: static;
+      padding-left: $spacing;
+      transform: translate3d( 0px, calc( var(--scroll) * -100% ), 0px );
+      transition: transform 0.25s ease-out;
+    }
+
+    &--how {
+      &__text {
+        flex: 0 0 40%;
+        p {
+          max-width: 100% !important;
+        }
+      }
+      .shape--circle {
+        shape-outside: circle( 50% );
+        position: static;
+        float: right;
+        width: 27.5vw;
+        height: 27.5vw;
+        transform: translate3d( calc( var(--scroll) * 50vw ), 0px, 0px );
+      }
     }
 
     p {
       margin-bottom: 1rem;
       max-width: 40%;
+    }
+
+    pre {
+      background-color: #1a0010;
+      color: #faf0fa;
+      font-family: 'Courier New', Courier, monospace;
+      font-weight: 500;
+      text-align: left;
+      display: block;
+      flex: 0 0 50%;
+      font-size: 75%;
+      padding: $spacing / 2;
+
+      .display-scroll {
+        overflow: hidden;
+        width: 10px;
+        height: 14px;
+        display: inline-block;
+        position: relative;
+
+        &__inner {
+          display: inline-block;
+          font-family: 'Courier New', Courier, monospace;
+          position: absolute;
+          display: flex;
+          flex-direction: column;
+          width: 10px;
+          top: -5px;
+          left: 0;
+          transform: translate3d( 0px, calc( var(--scroll) * -250px ), 0px );
+          span {
+            font-family: inherit;
+          }
+        }
+
+        &:nth-of-type(2){
+          .display-scroll__inner {
+            transform: translate3d( 0px, calc( var(--scroll) * -500px ), 0px );
+          }
+        }
+
+        &:nth-of-type(3){
+          .display-scroll__inner {
+            transform: translate3d( 0px, calc( var(--scroll) * -1000px ), 0px );
+          }
+        }
+      }
     }
   }
 
